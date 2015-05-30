@@ -1,0 +1,12 @@
+<h1> Show Gram </h1>
+ 
+<%= image_tag @photo.avatar.url(:medium) %>
+<p>
+<%= @photo.caption %>
+</p>
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> | 
+<td><%= link_to 'Destroy', photo_path(@photo),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>  |
+<%= link_to 'Back', photos_path %>

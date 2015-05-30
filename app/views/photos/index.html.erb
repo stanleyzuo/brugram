@@ -1,2 +1,13 @@
 <h1>BruGram</h1>
-<p></p>
+
+<p><%= link_to 'New Gram', new_photo_path %> </p>
+<% @photos.each do |photo| %>
+<p>
+<%= image_tag photo.avatar.url(:medium) %>
+<p>
+<%= photo.caption %>
+</p>
+<%= link_to 'Show', photo_path(photo) %></td>   </p>
+
+<%end%>
+
