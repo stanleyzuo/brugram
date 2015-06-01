@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530114255) do
+ActiveRecord::Schema.define(version: 20150601101611) do
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string   "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hashtags_photos", id: false, force: :cascade do |t|
+    t.integer "hashtag_id", null: false
+    t.integer "photo_id",   null: false
+  end
 
   create_table "photos", force: :cascade do |t|
     t.string   "avatar_file_name"
