@@ -30,6 +30,30 @@ class PhotosController < ApplicationController
   def create 
     @photo = Photo.create(photo_params)
        if @photo.save
+        ## add method to parse for hashtags
+        array = @photo.caption.split(//)
+        value = ""
+        string = ""
+        array.each_with_index do |char, index|
+          if value == "#" 
+            
+            string << char
+          end
+          if char == "#"
+            value = "#"
+            #create the hashtag
+          elsif ((index == array.size - 1) || char == "." || char == "," || char == " " ) && value = "#"
+            hashtag = Hashtag.create(text: string)
+            story = @photo
+            story.hashtags << hashtag
+            story.save
+
+            string = ""
+            value == ""
+          end
+    
+        end
+
         redirect_to @photo
       else
         render 'new'
