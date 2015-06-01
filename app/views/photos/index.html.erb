@@ -10,7 +10,8 @@
 
 <p>
 <% photo.hashtags.each do |hashtag| %>
-#<%= hashtag.text %> 
+<% string = '#'+ hashtag.text %> 
+<%= link_to string, hashtag_path(hashtag) %>
 <% end %>
 </p>
 </p>

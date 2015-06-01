@@ -1,0 +1,13 @@
+<h1> #<%= @hashtag.text %> </h1>
+
+<% @hashtag.photos.each do |photo| %>
+<p>
+<%= image_tag photo.avatar.url(:medium) %>
+<p>
+<%= photo.caption %>
+</p>
+<%= link_to 'Show', photo_path(photo) %></td>   </p>
+
+<%end%>
+
+<%= link_to 'Back', hashtags_path %></td>

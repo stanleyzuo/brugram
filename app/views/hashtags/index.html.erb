@@ -2,7 +2,8 @@
 
 <% @hashtags.each do |hashtag| %>
 <p>
-#<%= hashtag.text %>
+<% string = '#'+ hashtag.text %> 
+<%= link_to string, hashtag_path(hashtag) %>
 </p>
 
 <%end%>

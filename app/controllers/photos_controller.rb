@@ -35,8 +35,7 @@ class PhotosController < ApplicationController
         value = ""
         string = ""
         array.each_with_index do |char, index|
-          if value == "#" 
-            
+          if value == "#"    
             string << char
           end
           if char == "#"
