@@ -12,17 +12,12 @@
 <% end %>
 </p>
 
-<p>Likes: <%=@photo.likes%></p>
+<p><%= link_to 'Likes', like_photo_path(@photo) %>:  <%=@photo.likes%></p>
 
 <h3>Comments</h3>
 <% @photo.comments.each do |comment| %>
   <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
- 
-  <p>
-    <strong>Comment:</strong>
+    <strong><b><%= comment.commenter %>:</b></strong>
     <%= comment.body %>
   </p>
 <% end %>
@@ -42,7 +37,7 @@
   </p>
 <% end %>
 
-<%= link_to 'Like', like_photo_path(@photo) %> | 
+
 <%= link_to 'Edit', edit_photo_path(@photo) %> | 
 <td><%= link_to 'Destroy', photo_path(@photo),
               method: :delete,
