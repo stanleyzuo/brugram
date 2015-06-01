@@ -1,6 +1,6 @@
 <h1>BruGram</h1>
 
-<p><%= link_to 'New Gram', new_photo_path %> </p>
+<p><%= link_to 'New Gram', new_photo_path %> | <%= link_to '#Hashtags', hashtags_path %> </p>
 <% @photos.each do |photo| %>
 <p>
 <%= image_tag photo.avatar.url(:medium) %>
