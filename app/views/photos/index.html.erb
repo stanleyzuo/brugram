@@ -7,6 +7,14 @@
 <p>
 <%= photo.caption %>
 </p>
+
+<p>
+<% photo.hashtags.each do |hashtag| %>
+
+#<%= hashtag.text %> 
+<% end %>
+</p>
+</p>
 <%= link_to 'Show', photo_path(photo) %></td>   </p>
 
 <%end%>
