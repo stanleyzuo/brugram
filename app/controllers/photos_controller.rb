@@ -42,14 +42,14 @@ class PhotosController < ApplicationController
           if char == "#"
             value = "#"
             #create the hashtag
-          elsif ((index == array.size - 1) || char == "." || char == "," || char == " " ) && value = "#"
+          elsif ((index == array.size - 1) || char == "." || char == "," || char == " " ) && value == "#"
             hashtag = Hashtag.create(text: string)
             story = @photo
             story.hashtags << hashtag
             story.save
 
             string = ""
-            value == ""
+            value = ""
           end
     
         end
