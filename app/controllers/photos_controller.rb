@@ -44,7 +44,7 @@ class PhotosController < ApplicationController
             #create the hashtag
           elsif ((index == array.size - 1) || char == "." || char == "," || char == " " ) && value == "#"
             #if hashtag already exists, don't create a new hashtag
-            hashtag = Hashtag.create(text: string)
+            hashtag = Hashtag.where(text: string).first_or_create()
             story = @photo
             story.hashtags << hashtag
             story.save
