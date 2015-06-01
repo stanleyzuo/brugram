@@ -5,6 +5,12 @@
 <%= @photo.caption %>
 </p>
 
+<p>
+<% @photo.hashtags.each do |hashtag| %>
+#<%= hashtag.text %> 
+<% end %>
+</p>
+
 <%= link_to 'Edit', edit_photo_path(@photo) %> | 
 <td><%= link_to 'Destroy', photo_path(@photo),
               method: :delete,
