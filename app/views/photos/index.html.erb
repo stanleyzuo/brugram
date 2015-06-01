@@ -1,9 +1,7 @@
-<h1>BruGram</h1>
-
-<p><%= link_to 'New Gram', new_photo_path %> | <%= link_to '#Hashtags', hashtags_path %> </p>
+<div class="page">
 <% @photos.each do |photo| %>
 <p>
-<%= image_tag photo.avatar.url(:medium) %>
+<%= link_to image_tag(photo.avatar.url(:medium)), photo_path(photo) %>
 <p>
 <%= photo.caption %>
 </p>
@@ -14,8 +12,8 @@
 <%= link_to string, hashtag_path(hashtag) %>
 <% end %>
 </p>
-</p>
-<%= link_to 'Show', photo_path(photo) %></td>   </p>
+
+</div>
 
 <%end%>
 

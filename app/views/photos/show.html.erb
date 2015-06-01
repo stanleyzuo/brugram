@@ -1,9 +1,7 @@
-<h1> Show Gram </h1>
+<div class="page">
+<h1> <%= @photo.caption %> </h1>
  
 <%= image_tag @photo.avatar.url(:medium) %>
-<p>
-<%= @photo.caption %>
-</p>
 
 <p>
 <% @photo.hashtags.each do |hashtag| %>
@@ -43,3 +41,4 @@
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>  |
 <%= link_to 'Back', photos_path %>
+</div>
