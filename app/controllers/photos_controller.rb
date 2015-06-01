@@ -15,10 +15,33 @@ class PhotosController < ApplicationController
       @photo = Photo.find(params[:id])
 
     if @photo.update(photo_params)
+      array = @photo.caption.split(//)
+        value = ""
+        string = ""
+        array.each_with_index do |char, index|
+          if value == "#"    
+            string << char
+          end
+          if char == "#"
+            value = "#"
+            #create the hashtag
+          elsif ((index == array.size - 1) || char == "." || char == "," || char == " " ) && value == "#"
+            #if hashtag already exists, don't create a new hashtag
+            hashtag = Hashtag.where(text: string).first_or_create()
+            story = @photo
+            story.hashtags << hashtag
+            story.save
+
+            string = ""
+            value = ""
+          end
+    
+        end
       redirect_to @photo
     else
       render 'edit'
     end
+
   end
 
   def destroy
@@ -31,6 +54,7 @@ class PhotosController < ApplicationController
     @photo = Photo.create(photo_params)
        if @photo.save
         ## add method to parse for hashtags
+
         array = @photo.caption.split(//)
         value = ""
         string = ""
@@ -60,6 +84,11 @@ class PhotosController < ApplicationController
      end
   end
 
+  def like
+    @photo = Photo.find(params[:id])
+    @photo.liked!
+    redirect_to @photo
+  end
   def new 
     @photo = Photo.new
   end

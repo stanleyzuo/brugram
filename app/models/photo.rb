@@ -3,4 +3,16 @@ class Photo < ActiveRecord::Base
   	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   	has_and_belongs_to_many :hashtags
   	has_many :comments
+
+  	def liked!
+		if self.likes == nil
+			story = self
+			story.likes = 0
+			story.save
+		else
+			story = self
+			story.likes = story.likes + 1
+			story.save
+		end
+	end
 end
