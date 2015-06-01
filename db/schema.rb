@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 20150601101611) do
     t.integer "photo_id",   null: false
   end
 
+  add_index "hashtags_photos", ["hashtag_id", "photo_id"], name: "index_hashtags_photos_on_hashtag_id_and_photo_id"
+  add_index "hashtags_photos", ["photo_id", "hashtag_id"], name: "index_hashtags_photos_on_photo_id_and_hashtag_id"
+
   create_table "photos", force: :cascade do |t|
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
